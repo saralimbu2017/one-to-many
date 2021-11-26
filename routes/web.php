@@ -34,7 +34,14 @@ Route::get('/read',function(){
     }
 });
 
+//Route for update operation
 Route::get('/update',function(){
     $user = User::find(1);
     $user->posts()->whereId(1)->update(['title'=>'I love laravel','body'=>'Awesome']);
+});
+
+//Route for delete operation
+Route::get('/delete',function(){
+    $user = User::find(1);
+    $user->posts()->whereId(1)->delete();
 });
