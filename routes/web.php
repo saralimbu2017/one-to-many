@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Models\User;
+use App\Models\Post;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,4 +16,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/insert',function(){
+    $user = User::findOrFail(1);
+    $post = new Post(['title'=>'PHP','body'=>'lorem ipsum']);
+    $user->posts()->save($post);
+
 });
