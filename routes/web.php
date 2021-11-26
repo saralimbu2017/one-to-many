@@ -18,9 +18,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//Route for insert operation to database.
 Route::get('/insert',function(){
     $user = User::findOrFail(1);
     $post = new Post(['title'=>'PHP','body'=>'lorem ipsum']);
     $user->posts()->save($post);
 
+});
+
+//Route for read operation to database.
+Route::get('/read',function(){
+    $user = User::findOrFail(1);
+    foreach($user->posts as $post) {
+        echo $post->title;
+    }
 });
